@@ -14,7 +14,7 @@ Perfect for AI assistants that need to help users manage their digital workflows
 
 **🚀 Latest Features**: Enhanced content publishing with **Facebook page management**, automatic sentiment analysis, comprehensive analytics, and production-ready OAuth2 authentication across all platforms.
 
-<p align="center"><img height="512" src=https://github.com/user-attachments/assets/b61db02e-bde4-4386-b5a9-2b1c6a989925></p>
+
 
 ## Overview
 
