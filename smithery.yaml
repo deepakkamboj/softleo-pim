@@ -1,0 +1,74 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    description: Configuration options for Personal Assistant MCP Server. OAuth credentials are required for remote server usage.
+    properties:
+      GOOGLE_CLIENT_ID:
+        type: string
+        description: "Google OAuth2 client ID (required for Gmail and Calendar tools)"
+      GOOGLE_CLIENT_SECRET:
+        type: string
+        description: "Google OAuth2 client secret (required for Gmail and Calendar tools)"
+      GOOGLE_REFRESH_TOKEN:
+        type: string
+        description: "Google OAuth2 refresh token (required for Gmail and Calendar tools)"
+      LINKEDIN_CLIENT_ID:
+        type: string
+        description: "LinkedIn OAuth2 client ID (required for LinkedIn tools)"
+      LINKEDIN_CLIENT_SECRET:
+        type: string
+        description: "LinkedIn OAuth2 client secret (required for LinkedIn tools)"
+      LINKEDIN_ACCESS_TOKEN:
+        type: string
+        description: "LinkedIn access token (alternative to client credentials)"
+      LINKEDIN_REFRESH_TOKEN:
+        type: string
+        description: "LinkedIn refresh token (optional)"
+      MCP_CONFIG_DIR:
+        type: string
+        description: "Directory for storing configuration files (default: ~/.pa-mcp)"
+      AUTH_SERVER_PORT:
+        type: string
+        description: "Port for OAuth authentication server (default: 3001)"
+      PORT:
+        type: string
+        description: "Port for MCP server (default: 3001)"
+    required:
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - GOOGLE_REFRESH_TOKEN
+  commandFunction: |-
+    (config) => {
+      const args = ['dist/index.js'];
+      
+      // Add Google OAuth config
+      if (config.GOOGLE_CLIENT_ID) args.push(`--google-client-id=${config.GOOGLE_CLIENT_ID}`);
+      if (config.GOOGLE_CLIENT_SECRET) args.push(`--google-client-secret=${config.GOOGLE_CLIENT_SECRET}`);
+      if (config.GOOGLE_REFRESH_TOKEN) args.push(`--google-refresh-token=${config.GOOGLE_REFRESH_TOKEN}`);
+      
+      // Add LinkedIn OAuth config
+      if (config.LINKEDIN_CLIENT_ID) args.push(`--linkedin-client-id=${config.LINKEDIN_CLIENT_ID}`);
+      if (config.LINKEDIN_CLIENT_SECRET) args.push(`--linkedin-client-secret=${config.LINKEDIN_CLIENT_SECRET}`);
+      if (config.LINKEDIN_ACCESS_TOKEN) args.push(`--linkedin-access-token=${config.LINKEDIN_ACCESS_TOKEN}`);
+      if (config.LINKEDIN_REFRESH_TOKEN) args.push(`--linkedin-refresh-token=${config.LINKEDIN_REFRESH_TOKEN}`);
+      
+      // Add other config options
+      if (config.MCP_CONFIG_DIR) args.push(`--mcp-config-dir=${config.MCP_CONFIG_DIR}`);
+      if (config.AUTH_SERVER_PORT) args.push(`--auth-server-port=${config.AUTH_SERVER_PORT}`);
+      if (config.PORT) args.push(`--port=${config.PORT}`);
+      
+      return { command: 'node', args };
+    }
+  exampleConfig:
+    GOOGLE_CLIENT_ID: "your_google_client_id_here"
+    GOOGLE_CLIENT_SECRET: "your_google_client_secret_here"
+    GOOGLE_REFRESH_TOKEN: "your_google_refresh_token_here"
+    LINKEDIN_CLIENT_ID: "your_linkedin_client_id_here"
+    LINKEDIN_CLIENT_SECRET: "your_linkedin_client_secret_here"
+    MCP_CONFIG_DIR: "/home/user/.pa-mcp"
+    AUTH_SERVER_PORT: "3001"
+    PORT: "3001"

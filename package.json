@@ -1,0 +1,71 @@
+{
+  "name": "@softleolabs/personal-assistant-mcp",
+  "version": "0.0.1",
+  "description": "Personal Assistant MCP Server - AI-powered productivity companion with Gmail, Google Calendar, and LinkedIn integrations. Manage emails, schedule events, publish posts, and automate workflows through a unified interface.",
+  "type": "module",
+  "bin": {
+    "personal-assistant-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/index.js",
+    "auth": "node ./dist/auth/index.js",
+    "auth:google": "node ./dist/auth/index.js --provider=google",
+    "auth:linkedin": "node ./dist/auth/index.js --provider=linkedin",
+    "auth:facebook": "node ./dist/auth/index.js --provider=facebook",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:google": "jest test/google",
+    "test:linkedin": "jest test/linkedin",
+    "test:facebook": "jest test/facebook",
+    "test:text-formatter": "jest test/text-formatter",
+    "test:report": "node test/coverage-report.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.16.0",
+    "@smithery/sdk": "1.4.3",
+    "axios": "^1.12.2",
+    "facebook-nodejs-business-sdk": "^23.0.2",
+    "google-auth-library": "9.15.1",
+    "googleapis": "129.0.0",
+    "linkedin-api-client": "^0.3.0",
+    "minimist": "^1.2.8",
+    "open": "9.1.0",
+    "ts-node": "10.9.2",
+    "zod": "3.22.4"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.4",
+    "@types/jest": "29.5.14",
+    "@types/minimist": "^1.2.5",
+    "@types/node": "20.17.27",
+    "jest": "29.7.0",
+    "ts-jest": "29.1.1",
+    "typescript": "5.8.2"
+  },
+  "keywords": [
+    "personal-assistant",
+    "mcp",
+    "ai-assistant",
+    "productivity",
+    "gmail",
+    "calendar",
+    "linkedin",
+    "automation",
+    "claude",
+    "anthropic",
+    "email",
+    "scheduling",
+    "workflow"
+  ],
+  "author": "Deepak Kamboj (deepak.kamboj@softleo.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/softleo-llc/personal-assistant-mcp"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
