@@ -1,7 +1,7 @@
 {
   "name": "@softleolabs/personal-assistant-mcp",
   "version": "0.0.1",
-  "description": "Personal Assistant MCP Server - AI-powered productivity companion with Gmail, Google Calendar, and LinkedIn integrations. Manage emails, schedule events, publish posts, and automate workflows through a unified interface.",
+  "description": "Personal Assistant MCP Server - AI-powered productivity companion with Gmail, Google Calendar, LinkedIn and Facebook integrations. Manage emails, schedule events, publish posts, and automate workflows through a unified interface.",
   "type": "module",
   "bin": {
     "personal-assistant-mcp": "./dist/index.js"
